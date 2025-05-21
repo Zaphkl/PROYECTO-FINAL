@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio San Miguel</title>
+    <link rel="stylesheet" href="../css/csspri.css">
+</head>
+
+<body>
+    <header>
+        <div class="contenedor">
+            <div class="marca">Colegio San Miguel</div>
+            <ul class="nav">
+                <li><a href="#" class="active" id="nav-home">Inicio</a></li>
+                <li><a href="#" id="nav-roles">Gestión de Roles</a></li>
+                <li><a href="#" id="nav-about">Acerca de</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <main>
+            <section id="home-view">
+                <div class="tarjeta">
+                    <div class="tarjeta-cabecera">
+                        <h1>Sistema de Gestión de Roles Escolares</h1>
+                    </div>
+                    <p>Bienvenido al sistema de gestión de roles del Colegio San Miguel. Este sistema le permite
+                        administrar los diferentes roles dentro de la institución.</p>
+
+                    <div class="estadisticas">
+                        <div class="tarjeta-estadistica">
+                            <h3>Profesores</h3>
+                            <div class="valor-estadistica" id="teacher-count">0</div>
+                        </div>
+                        <div class="tarjeta-estadistica">
+                            <h3>Alumnos</h3>
+                            <div class="valor-estadistica" id="student-count">0</div>
+                        </div>
+                        <div class="tarjeta-estadistica">
+                            <h3>Administrativos</h3>
+                            <div class="valor-estadistica" id="admin-count">0</div>
+                        </div>
+                    </div>
+
+                    <button class="boton" id="go-to-roles">Gestionar Roles</button>
+                </div>
+            </section>
+
+            <section id="roles-view" style="display: none;">
+                <div class="tarjeta">
+
+                    <div class="tarjeta-cabecera">
+                        <h2>Gestión de Roles</h2>
+                        <button class="boton" id="add-user-btn">Agregar Usuario</button>
+                    </div>
+
+
+                    <div class="barra-busqueda">
+                        <input type="text" id="search-input" placeholder="Buscar por nombre o rol...">
+                        <button class="boton" id="search-btn">Buscar</button>
+                    </div>
+
+
+
+
+                    <div id="notification" class="notificacion" style="display: none;"></div>
+
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Rol</th>
+                                <th>Departamento/Clase</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="about-view" style="display: none;">
+                <div class="tarjeta">
+                    <div class="tarjeta-cabecera">
+                        <h2>Acerca del Sistema</h2>
+                    </div>
+                    <p>Este sistema de gestión de roles fue desarrollado para el Colegio San Miguel con el objetivo de
+                        facilitar la administración de los diferentes miembros de la comunidad educativa.</p>
+                    <p>Características principales:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Gestión de usuarios con diferentes roles (profesores, alumnos, administrativos)</li>
+                        <li>Asignación de departamentos y clases</li>
+                        <li>Búsqueda de miembros</li>
+                        <li>Estadísticas generales</li>
+                    </ul>
+                    <p>Versión 1.0 (2025)</p>
+                </div>
+            </section>
+        </main>
+        <div id="user-modal" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar">&times;</span>
+                <h3 id="modal-title">Agregar Nuevo Usuario</h3>
+                <form id="user-form">
+                    <input type="hidden" id="user-id">
+                    <div class="grupo-formulario">
+                        <label for="user-name">Nombre Completo:</label>
+                        <input type="text" id="user-name" required>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="user-role">Rol:</label>
+                        <select id="user-role" required>
+                            <option value="">Seleccione un rol</option>
+                            <option value="profesor">Profesor</option>
+                            <option value="alumno">Alumno</option>
+                            <option value="admin">Administrativo</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="user-department">Departamento/Clase:</label>
+                        <input type="text" id="user-department" required>
+                    </div>
+                    <button type="submit" class="boton">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <div id="delete-modal" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar">&times;</span>
+                <h3>Confirmar Eliminación</h3>
+                <p>¿Está seguro que desea eliminar a este usuario? Esta acción no se puede deshacer.</p>
+                <input type="hidden" id="delete-user-id">
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <button class="boton boton-peligro" id="confirm-delete">Eliminar</button>
+                    <button class="boton" id="cancel-delete">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 Colegio San Miguel - Sistema de Gestión de Roles</p>
+        </div>
+    </footer>
+
+</body>
+<script src="../js/jspri.js"></script>
+
+</html>
